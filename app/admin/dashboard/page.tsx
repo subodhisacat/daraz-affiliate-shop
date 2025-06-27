@@ -72,35 +72,38 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div
-      style={{
-        maxWidth: 900,
-        margin: "auto",
-        padding: 20,
-        fontFamily: "Arial",
-      }}
-    >
-      <h1>Admin Dashboard</h1>
-      <button
-        onClick={handleAddProduct}
-        className="p-5 hover:bg-blue-400 text-lg bg-blue-500 rounded-4xl"
-      >
-        ➕ Add Product
-      </button>
-      {products.length === 0 && <p>No products found.</p>}
+    <div className="max-w-3xl mx-auto p-5 font-sans">
+      <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
+      <div className="flex  mb-8">
+        <button
+          onClick={handleAddProduct}
+          className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-base font-semibold rounded-lg shadow transition"
+        >
+          <span className="text-xl">➕</span>
+          <span>Add Product</span>
+        </button>
+      </div>
+      {products.length === 0 && (
+        <p className="text-gray-500">No products found.</p>
+      )}
       {products.map((product) => (
         <div
           key={product.id}
-          style={{ border: "1px solid #ccc", padding: 10, marginBottom: 10 }}
+          className="border border-gray-300 rounded-lg p-4 mb-4 shadow-sm"
         >
-          <h3>{product.title}</h3>
-          <p>Price: Rs. {product.price}</p>
-          <p>Category: {product.category}</p>
-          <div style={{ display: "flex", gap: 10 }}>
-            <button onClick={() => handleEdit(product.id)}>✏️ Edit</button>
+          <h3 className="text-xl font-semibold">{product.title}</h3>
+          <p className="text-gray-700">Price: Rs. {product.price}</p>
+          <p className="text-gray-600">Category: {product.category}</p>
+          <div className="flex gap-4 mt-3">
+            <button
+              onClick={() => handleEdit(product.id)}
+              className="px-4 py-2 bg-yellow-400 hover:bg-yellow-300 rounded text-black font-medium transition"
+            >
+              ✏️ Edit
+            </button>
             <button
               onClick={() => handleDelete(product.id)}
-              style={{ color: "red" }}
+              className="px-4 py-2 bg-red-500 hover:bg-red-400 rounded text-white font-medium transition"
             >
               🗑️ Delete
             </button>

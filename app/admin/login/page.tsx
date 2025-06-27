@@ -1,39 +1,44 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AdminLogin() {
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const router = useRouter()
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-  const ADMIN_PASSWORD = 'yourStrongPassword' // change this!
+  const ADMIN_PASSWORD = "yourStrongPassword"; // change this!
 
   const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (password === ADMIN_PASSWORD) {
-      localStorage.setItem('isAdmin', 'true')
-      router.push('/admin/dashboard')
+      localStorage.setItem("isAdmin", "true");
+      router.push("/admin/dashboard");
     } else {
-      setError('Incorrect password')
+      setError("Incorrect password");
     }
-  }
+  };
 
   return (
-    <div style={{ maxWidth: 400, margin: 'auto', padding: 20, fontFamily: 'Arial' }}>
-      <h1>Admin Login</h1>
-      <form onSubmit={handleLogin}>
+    <div className="max-w-md mx-auto p-8 font-sans">
+      <h1 className="text-2xl font-bold mb-6 text-center">Admin Login</h1>
+      <form onSubmit={handleLogin} className="space-y-4">
         <input
           type="password"
           placeholder="Enter admin password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
-          style={{ padding: 8, width: '100%', marginBottom: 10 }}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <button type="submit" style={{ padding: 8, width: '100%' }}>Login</button>
+        <button
+          type="submit"
+          className="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+        >
+          Login
+        </button>
       </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p className="text-red-600 mt-4 text-center">{error}</p>}
     </div>
-  )
+  );
 }

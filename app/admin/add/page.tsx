@@ -42,54 +42,51 @@ export default function AddProduct() {
   };
 
   return (
-    <div
-      style={{
-        maxWidth: 600,
-        margin: "auto",
-        padding: 20,
-        fontFamily: "Arial",
-      }}
-    >
-      <h1 className="text-xl ">Add Product</h1>
-      <form onSubmit={handleSubmit} className=" grid gap-4 ">
+    <div className="max-w-xl mx-auto  backdrop-blur-3xl  rounded-xl font-sans mt-10">
+      <h1 className="text-3xl font-extrabold mb-8 text-center ">Add Product</h1>
+      <form onSubmit={handleSubmit} className="grid gap-5">
         <input
           name="title"
-          className="border p-2 rounded-lg m-2 border-gray-600"
+          className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition m-1"
           placeholder="Product Title"
           onChange={handleChange}
           required
         />
         <textarea
           name="description"
-          className="border p-2 rounded-lg m-2"
+          className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition m-1 resize-none"
           placeholder="Description"
+          rows={3}
           onChange={handleChange}
           required
         />
         <input
           name="price"
-          className="border p-2 rounded-lg m-2"
+          type="number"
+          min="0"
+          step="0.01"
+          className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition m-1"
           placeholder="Price (e.g., 999)"
           onChange={handleChange}
           required
         />
         <input
           name="image_url"
-          className="border p-2 rounded-lg m-2"
+          className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition m-1"
           placeholder="Image URL"
           onChange={handleChange}
           required
         />
         <input
           name="category"
-          className="border p-2 rounded-lg m-2"
+          className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition m-1"
           placeholder="Category"
           onChange={handleChange}
           required
         />
         <input
           name="affiliate_link"
-          className="border p-2 rounded-lg m-2"
+          className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition m-1"
           placeholder="Affiliate Link"
           onChange={handleChange}
           required
@@ -97,8 +94,7 @@ export default function AddProduct() {
 
         <button
           type="submit"
-          className="m-2 hover:bg-blue-400 text-lg bg-blue-500 rounded-4xl"
-          style={{ padding: 10 }}
+          className="m-1 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-xl py-3 px-6 transition-colors shadow"
         >
           Add Product
         </button>
